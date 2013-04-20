@@ -1,0 +1,22 @@
+Status:
+    type: entity
+    table: status
+    fields:
+        idStatus:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_status
+            generator:
+                strategy: IDENTITY
+        status:
+            type: integer
+            unsigned: false
+            nullable: false
+        idWork:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_work
+    lifecycleCallbacks: {  }

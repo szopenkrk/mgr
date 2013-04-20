@@ -1,0 +1,21 @@
+Review:
+    type: entity
+    table: review
+    fields:
+        idReview:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_review
+            generator:
+                strategy: IDENTITY
+        dateReview:
+            type: date
+            nullable: false
+            column: date_review
+        workWork:
+            type: text
+            nullable: false
+            column: work_work
+    lifecycleCallbacks: {  }

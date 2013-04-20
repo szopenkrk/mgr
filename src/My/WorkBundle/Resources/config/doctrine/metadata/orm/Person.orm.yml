@@ -1,0 +1,30 @@
+Person:
+    type: entity
+    table: person
+    fields:
+        idPerson:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_person
+            generator:
+                strategy: IDENTITY
+        name:
+            type: text
+            nullable: false
+        surname:
+            type: text
+            nullable: false
+        mail:
+            type: text
+            nullable: false
+        status:
+            type: text
+            nullable: false
+        iduser:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idUser
+    lifecycleCallbacks: {  }

@@ -1,0 +1,46 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypeOfWork
+ *
+ * @ORM\Table(name="type_of_work")
+ * @ORM\Entity
+ */
+class TypeOfWork
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_type_of_work", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTypeOfWork;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="value_type_of_work", type="integer", nullable=false)
+     */
+    private $valueTypeOfWork;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     */
+    private $idWork;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_author", type="integer", nullable=false)
+     */
+    private $idAuthor;
+
+
+}

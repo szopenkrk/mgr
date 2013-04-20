@@ -1,0 +1,28 @@
+TypeOfWork:
+    type: entity
+    table: type_of_work
+    fields:
+        idTypeOfWork:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_type_of_work
+            generator:
+                strategy: IDENTITY
+        valueTypeOfWork:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: value_type_of_work
+        idWork:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_work
+        idAuthor:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_author
+    lifecycleCallbacks: {  }

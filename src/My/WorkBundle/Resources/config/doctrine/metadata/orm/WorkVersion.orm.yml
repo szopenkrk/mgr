@@ -1,0 +1,42 @@
+WorkVersion:
+    type: entity
+    table: work_version
+    fields:
+        idWorkVersion:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_work_version
+            generator:
+                strategy: IDENTITY
+        version:
+            type: integer
+            unsigned: false
+            nullable: false
+        workDateVersion:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: work_date_version
+        status:
+            type: text
+            nullable: false
+        contentVersion:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: content_version
+        titleVersion:
+            type: text
+            nullable: false
+            column: title_version
+        editorWorkVersion:
+            type: text
+            nullable: false
+            column: editor_work_version
+        revierwWorkVersion:
+            type: text
+            nullable: false
+            column: revierw_work_version
+    lifecycleCallbacks: {  }

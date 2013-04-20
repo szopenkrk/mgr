@@ -1,0 +1,46 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AreaOfInterest
+ *
+ * @ORM\Table(name="area_of_interest")
+ * @ORM\Entity
+ */
+class AreaOfInterest
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_areaofintrest", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAreaofintrest;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content_areaofintrest", type="text", nullable=false)
+     */
+    private $contentAreaofintrest;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     */
+    private $idUser;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     */
+    private $idWork;
+
+
+}

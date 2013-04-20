@@ -1,0 +1,17 @@
+Author:
+    type: entity
+    table: author
+    fields:
+        idAuthor:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_author
+            generator:
+                strategy: IDENTITY
+        autorName:
+            type: text
+            nullable: false
+            column: autor_name
+    lifecycleCallbacks: {  }

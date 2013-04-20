@@ -1,0 +1,39 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reviewer
+ *
+ * @ORM\Table(name="reviewer")
+ * @ORM\Entity
+ */
+class Reviewer
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_reviewer", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idReviewer;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_areaofinterest", type="integer", nullable=false)
+     */
+    private $idAreaofinterest;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_e-reviewer", type="integer", nullable=false)
+     */
+    private $idEReviewer;
+
+
+}

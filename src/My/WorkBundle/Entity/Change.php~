@@ -1,0 +1,53 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Change
+ *
+ * @ORM\Table(name="change")
+ * @ORM\Entity
+ */
+class Change
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_change", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idChange;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="change_date", type="date", nullable=false)
+     */
+    private $changeDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="change_content", type="text", nullable=false)
+     */
+    private $changeContent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     */
+    private $idWork;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_status", type="integer", nullable=false)
+     */
+    private $idStatus;
+
+
+}

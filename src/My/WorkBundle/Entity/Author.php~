@@ -1,0 +1,32 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Author
+ *
+ * @ORM\Table(name="author")
+ * @ORM\Entity
+ */
+class Author
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_author", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAuthor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="autor_name", type="text", nullable=false)
+     */
+    private $autorName;
+
+
+}

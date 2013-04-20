@@ -1,0 +1,39 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Review
+ *
+ * @ORM\Table(name="review")
+ * @ORM\Entity
+ */
+class Review
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_review", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idReview;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_review", type="date", nullable=false)
+     */
+    private $dateReview;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="work_work", type="text", nullable=false)
+     */
+    private $workWork;
+
+
+}

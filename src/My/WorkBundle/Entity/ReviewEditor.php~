@@ -1,0 +1,53 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ReviewEditor
+ *
+ * @ORM\Table(name="review_editor")
+ * @ORM\Entity
+ */
+class ReviewEditor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_revieweditor", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRevieweditor;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="send", type="boolean", nullable=false)
+     */
+    private $send;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="inreview", type="boolean", nullable=false)
+     */
+    private $inreview;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="finished", type="boolean", nullable=false)
+     */
+    private $finished;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_review", type="integer", nullable=false)
+     */
+    private $idReview;
+
+
+}

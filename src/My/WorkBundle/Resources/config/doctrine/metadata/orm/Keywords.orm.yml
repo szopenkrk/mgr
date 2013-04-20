@@ -1,0 +1,27 @@
+Keywords:
+    type: entity
+    table: keywords
+    fields:
+        idKeywords:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_keywords
+            generator:
+                strategy: IDENTITY
+        idWork:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_work
+        idWorkVersion:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_work_version
+        title:
+            type: integer
+            unsigned: false
+            nullable: false
+    lifecycleCallbacks: {  }

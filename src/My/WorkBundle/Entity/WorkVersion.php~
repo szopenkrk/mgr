@@ -1,0 +1,74 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * WorkVersion
+ *
+ * @ORM\Table(name="work_version")
+ * @ORM\Entity
+ */
+class WorkVersion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work_version", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idWorkVersion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="version", type="integer", nullable=false)
+     */
+    private $version;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="work_date_version", type="integer", nullable=false)
+     */
+    private $workDateVersion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="text", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="content_version", type="integer", nullable=false)
+     */
+    private $contentVersion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title_version", type="text", nullable=false)
+     */
+    private $titleVersion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="editor_work_version", type="text", nullable=false)
+     */
+    private $editorWorkVersion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revierw_work_version", type="text", nullable=false)
+     */
+    private $revierwWorkVersion;
+
+
+}

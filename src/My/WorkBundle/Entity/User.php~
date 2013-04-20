@@ -1,0 +1,46 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_login", type="text", nullable=false)
+     */
+    private $userLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_password", type="text", nullable=false)
+     */
+    private $userPassword;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_role", type="integer", nullable=false)
+     */
+    private $idRole;
+
+
+}

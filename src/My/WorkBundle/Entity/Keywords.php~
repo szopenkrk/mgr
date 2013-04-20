@@ -1,0 +1,46 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Keywords
+ *
+ * @ORM\Table(name="keywords")
+ * @ORM\Entity
+ */
+class Keywords
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_keywords", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idKeywords;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     */
+    private $idWork;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work_version", type="integer", nullable=false)
+     */
+    private $idWorkVersion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="title", type="integer", nullable=false)
+     */
+    private $title;
+
+
+}

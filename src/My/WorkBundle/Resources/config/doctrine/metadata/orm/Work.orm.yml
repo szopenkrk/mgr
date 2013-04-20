@@ -1,0 +1,43 @@
+Work:
+    type: entity
+    table: work
+    fields:
+        idWork:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_work
+            generator:
+                strategy: IDENTITY
+        workDate:
+            type: date
+            nullable: false
+            column: work_date
+        contentWork:
+            type: text
+            nullable: false
+            column: content_work
+        title:
+            type: text
+            nullable: false
+        editorWork:
+            type: text
+            nullable: false
+            column: editor_work
+        rewiewerWork:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: rewiewer_work
+        idAreaofinterest:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_areaofinterest
+        idKeywords:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_keywords
+    lifecycleCallbacks: {  }

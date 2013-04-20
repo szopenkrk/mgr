@@ -1,0 +1,39 @@
+<?php
+
+namespace My\WorkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Status
+ *
+ * @ORM\Table(name="status")
+ * @ORM\Entity
+ */
+class Status
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_status", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     */
+    private $idWork;
+
+
+}
