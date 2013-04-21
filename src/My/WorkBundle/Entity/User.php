@@ -30,6 +30,70 @@ class User
     private $userLogin;
 
     /**
+     * @param string $userAdmin
+     */
+    public function setUserAdmin($userAdmin)
+    {
+        $this->userAdmin = $userAdmin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserAdmin()
+    {
+        return $this->userAdmin;
+    }
+
+    /**
+     * @param string $userEmail
+     */
+    public function setUserEmail($userEmail)
+    {
+        $this->userEmail = $userEmail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserEmail()
+    {
+        return $this->userEmail;
+    }
+
+    /**
+     * @param string $userLogin
+     */
+    public function setUserLogin($userLogin)
+    {
+        $this->userLogin = $userLogin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserLogin()
+    {
+        return $this->userLogin;
+    }
+
+    /**
+     * @param string $userStatus
+     */
+    public function setUserStatus($userStatus)
+    {
+        $this->userStatus = $userStatus;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserStatus()
+    {
+        return $this->userStatus;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="user_password", type="text", nullable=false)
