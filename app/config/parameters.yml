@@ -1,10 +1,10 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     localhost
+    database_host:     mysql-178723.vipserv.org
     database_port:     
-    database_name:     mgr2
-    database_user:     root
-    database_password: 
+    database_name:     akopec_karol
+    database_user:     akopec_karol
+    database_password: karolmgr
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
