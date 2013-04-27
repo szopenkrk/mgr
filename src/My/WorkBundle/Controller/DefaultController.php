@@ -32,7 +32,7 @@ class DefaultController extends Controller
      */
     public function autorAction()
     {
-        return array();
+        return array('form' => $this->_createForm()->createView());
     }
     /**
      * @Route("/editor.html", name="url_editor")
@@ -59,9 +59,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $entities = $em->getRepository('MyWorkBundle:User')->findAll();
         return array('entities' => $entities);
-        
+
     }
-     /**
+    /**
      * @Route("/work.html", name="url_work")
      * @Template()
      */
@@ -71,22 +71,32 @@ class DefaultController extends Controller
         $entities = $em->getRepository('MyWorkBundle:Work')->findAll();
         return array('entities' => $entities);
     }
-    
+
     public function formAction(Request $request)
     {
         $work = new Work();
         $work->setContentWork('Zawartość pracy');
         $work->getWorkDate(new \DateTime('tomorrow'));
 
-        $form = $this->createFormBuilder($contentWork)
-            ->add('contentWork', 'text')
-            ->add('workDate', 'date')
-            ->getForm();
+        $form = $this->_createForm($work);
 
         return $this->render('MyWorkBundle:Default:work.html.twig', array(
             'form' => $form->createView(),
         ));
     }
-    
-    
+
+    /**
+     * @param $contentWork
+     * @return \Symfony\Component\Form\Form
+     */
+    private function _createForm($contentWork = null)
+    {
+        $form = $this->createFormBuilder($contentWork)
+            ->add('contentWork', 'text')
+            ->add('workDate', 'date')
+            ->getForm();
+        return $form;
+    }
+
+
 }

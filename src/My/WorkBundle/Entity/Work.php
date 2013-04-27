@@ -3,9 +3,6 @@
 namespace My\WorkBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Work
@@ -245,6 +242,4 @@ class Work
     {
         return $this->idKeywords;
     }
-    
-   
 }

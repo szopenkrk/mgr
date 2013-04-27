@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new My\WorkBundle\MyWorkBundle(),
             new LRotherfield\Bundle\NotificationBundle\LRotherfieldNotificationBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new My\PracaBundle\MyPracaBundle(),
         );
 
