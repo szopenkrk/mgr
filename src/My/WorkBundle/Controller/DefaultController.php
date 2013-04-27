@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Acme\TaskBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
+use My\WorkBundle\Entity\Work;
 
 class DefaultController extends Controller
 {
@@ -32,7 +33,28 @@ class DefaultController extends Controller
      */
     public function autorAction()
     {
-        return array('form' => $this->_createForm()->createView());
+        $document = new Work();
+        $form = $this->createFormBuilder($document)
+            ->add('contentWork', 'text')
+            ->add('workDate', 'date')
+            ->add('title')
+            ->add('file')
+            ->getForm()
+        ;
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($document);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl("url_autor"));
+            }
+        }
+
+        return array('form' => $form->createView());
     }
     /**
      * @Route("/editor.html", name="url_editor")
