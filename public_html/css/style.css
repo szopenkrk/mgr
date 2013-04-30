@@ -1,3 +1,11 @@
+body{
+    margin: 0 auto;
+    background: #0099FF;
+}
+.baner{
+    margin: 0 auto;
+    float:laft;
+}
 #container{
     margin: 0 auto;
     width:700px;
@@ -7,13 +15,28 @@
     width:700px;
     float:left;
     margin:10px auto;
+    color: #ffffff;
+    font-weight: bold;
 }
 .menu ul li{
     float:left;
     list-style-type: none;
     margin-left:5px;
-    
+    color: #ffffff;
+    font-weight: bold;
 } 
+.menu a{
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Arial;
+}
+.menu a:hover{
+    color: #000000;
+    font-weight: bold;
+
+}
+
 #center{
     float:left;
     margin:auto;
@@ -21,4 +44,10 @@
     width:700px;
     height:auto;
     margin-left:50px;
+}
+.login{
+    width: 200px;
+    margin-top: 50px;
+    margin-left:auto;
+    margin-right:auto;
 }
