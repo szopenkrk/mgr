@@ -1,14 +1,15 @@
+
 {% extends "MyWorkBundle::layout.html.twig" %}
 
 {% block content %}
 <p>
-    Tu jest Autor ;)
-<h1>Upload File</h1>
+    System dodawania prac naukowych.
 
 <form action="#" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
-    <input type="submit" value="Upload Document" />
+    <input type="submit" value="Zapisz dokument" />
 </form>
 </p>
 {% endblock %}
+

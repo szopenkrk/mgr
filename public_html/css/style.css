@@ -10,23 +10,24 @@ body{
     margin: 0 auto;
     width:700px;
     height:auto;
+    background: #ffffff;
 }
 .menu{
     width:700px;
     float:left;
     margin:10px auto;
-    color: #ffffff;
+    color: #000000;
     font-weight: bold;
 }
 .menu ul li{
     float:left;
     list-style-type: none;
     margin-left:5px;
-    color: #ffffff;
+    color: #000000;
     font-weight: bold;
 } 
 .menu a{
-    color: #ffffff;
+    color: #0099FF;
     font-weight: bold;
     text-decoration: none;
     font-family: Arial;
@@ -40,10 +41,11 @@ body{
 #center{
     float:left;
     margin:auto;
-    margin-top:25px;
-    width:700px;
+    padding-left: 40px;
+    width:660px;
     height:auto;
-    margin-left:50px;
+    
+    background: #ffffff;
 }
 .login{
     width: 200px;

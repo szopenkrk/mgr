@@ -7,7 +7,7 @@
     <body>
         <div id="container">
             <div id="header">
-                
+                <div class="baner"><img src="{{asset('images/head.jpg')}}"></div>
                 <div class="menu">
                     <ul>
                         <li><a href="{{ path('url_panel') }}">Panel</a></li>
@@ -22,8 +22,7 @@
                         <li><a href="register">REJESTRACJA</a></li>
                     </ul>
                 </div>
-                <div class="baner"></div>
-            </div>
+            
                 <div id="center">
                     {%block content%}
                     {%endblock%}
