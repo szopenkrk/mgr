@@ -20,9 +20,8 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new My\WorkBundle\MyWorkBundle(),
-            new LRotherfield\Bundle\NotificationBundle\LRotherfieldNotificationBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new My\PracaBundle\MyPracaBundle(),
+            new My\AutorBundle\MyAutorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

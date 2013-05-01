@@ -1,10 +1,5 @@
-my_praca:
-    resource: "@MyPracaBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-l_rotherfield_notification:
-    resource: "@LRotherfieldNotificationBundle/Controller/"
+my_autor:
+    resource: "@MyAutorBundle/Controller/"
     type:     annotation
     prefix:   /
 
