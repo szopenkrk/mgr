@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new My\WorkBundle\MyWorkBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new My\AutorBundle\MyAutorBundle(),
+            new My\EditorBundle\MyEditorBundle(),
+            new My\ReviewerBundle\MyReviewerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

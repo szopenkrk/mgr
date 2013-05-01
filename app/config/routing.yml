@@ -1,3 +1,13 @@
+my_reviewer:
+    resource: "@MyReviewerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+my_editor:
+    resource: "@MyEditorBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 my_autor:
     resource: "@MyAutorBundle/Controller/"
     type:     annotation
