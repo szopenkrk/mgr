@@ -1,0 +1,11 @@
+﻿
+W symfony masz takie coś jak firewalle. Konfigurujesz to w security.yml.
+Popatrz jakie masz tam ustawienia i dostosuj
+
+
+
+
+ Z formularza dostajesz obiekt encji. 
+Możesz potem pobrać uchwyt do entity 
+managera doctrine2 i dać persist na tym obiekcie.
+Taki przykład jest w dokumentacji
