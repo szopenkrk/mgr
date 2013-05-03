@@ -28,7 +28,11 @@ class Author
      */
     private $autorName;
 
-
+    /**
+     * @ORM\ManyToMany(targetEntity="Work", inversedBy="Author")
+     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     */
+    protected $Work;
 
     /**
      * Get idAuthor

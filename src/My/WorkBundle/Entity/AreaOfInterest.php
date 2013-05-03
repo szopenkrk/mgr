@@ -29,18 +29,18 @@ class AreaOfInterest
     private $contentAreaofintrest;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="areaofinterest")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
-    private $idUser;
+    protected $User;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="id_work", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="areaofinterest")
+     * @ORM\JoinColumn(name="idwork", referencedColumnName="idWork")
      */
-    private $idWork;
+
+    protected  $Work;
 
 
 
@@ -77,49 +77,4 @@ class AreaOfInterest
         return $this->contentAreaofintrest;
     }
 
-    /**
-     * Set idUser
-     *
-     * @param integer $idUser
-     * @return AreaOfInterest
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-    
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return integer 
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-    /**
-     * Set idWork
-     *
-     * @param integer $idWork
-     * @return AreaOfInterest
-     */
-    public function setIdWork($idWork)
-    {
-        $this->idWork = $idWork;
-    
-        return $this;
-    }
-
-    /**
-     * Get idWork
-     *
-     * @return integer 
-     */
-    public function getIdWork()
-    {
-        return $this->idWork;
-    }
 }

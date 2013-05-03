@@ -57,14 +57,30 @@ class Work
      *
      * @ORM\Column(name="rewiewer_work", type="integer", nullable=false)
      */
-    private $rewiewerWork = '';
+     private $rewiewerWork = '';
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_areaofinterest", type="integer", nullable=false)
+     *  @ORM\ManyToOne(targetEntity="AreaOfInterest", inversedBy="work")
+     *  @ORM\JoinColumn(name="idAreaofintrest", referencedColumnName="idAreaofintrest")
      */
-    private $idAreaofinterest = 0;
+     protected $Areaofinterest;
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Attachments", mappedBy="Work")
+     * @ORM\JoinColumn(name="idAttachments", referencedColumnName="idAttachments"),
+     * @ORM\JoinColumn(name="content_attachments", referencedColumnName="content_attachments")
+     */
+      protected $Attachments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Author", inversedBy="Work")
+     * @ORM\Column(name="id_author", type="integer", nullable=false)
+     */
+    protected $Author;
 
     /**
      * @var integer
@@ -72,6 +88,7 @@ class Work
      * @ORM\Column(name="id_keywords", type="integer", nullable=false)
      */
     private $idKeywords = 0;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

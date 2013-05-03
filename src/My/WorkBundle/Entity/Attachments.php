@@ -29,8 +29,7 @@ class Attachments
     private $contentAttachments;
 
     /**
-     * @var integer
-     *
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="Attachments")
      * @ORM\Column(name="id_work", type="integer", nullable=false)
      */
     private $idWork;
@@ -40,7 +39,7 @@ class Attachments
     /**
      * Get idAttachments
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdAttachments()
     {
