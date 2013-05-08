@@ -32,7 +32,7 @@ class Author
      * @ORM\ManyToMany(targetEntity="Work", inversedBy="Author")
      * @ORM\Column(name="id_work", type="integer", nullable=false)
      */
-    protected $Work;
+    protected $id_work;
 
     /**
      * Get idAuthor

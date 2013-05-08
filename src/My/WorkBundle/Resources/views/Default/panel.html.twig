@@ -2,6 +2,12 @@
 
 {% block content %}
 <p>
-    Tu jest panel ;)
+    Wybierz Swoją Rolę:
+    <ul>
+        <li><a href="{{ path('url_autor') }}">Autor</a></li>
+        <li><a href="{{ path('url_editor') }}">Edytor</a></li>
+        <li><a href="{{ path('url_rewiever') }}">Rewiever</a></li>
+        <li><a href="logout">Wyloguj</a></li>
+    </ul>
 </p>
 {% endblock %}

@@ -62,7 +62,9 @@ class DefaultController extends Controller
      */
     public function editorAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getEntityManager();
+        $entities = $em->getRepository('MyWorkBundle:Work')->findAll();
+        return array('entities' => $entities);
     }
     /**
      * @Route("/rewiever.html", name="url_rewiever")
@@ -73,7 +75,7 @@ class DefaultController extends Controller
         return array();
     }
     /**
-     * @Route("/users.html", name="url_users")
+     * @Route("users.html", name="url_users")
      * @Template()
      */
     public function usersAction()

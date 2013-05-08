@@ -30,7 +30,7 @@ class AreaOfInterest
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="areaofinterest")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
      */
     protected $User;
 

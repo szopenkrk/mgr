@@ -2,7 +2,15 @@
 
 {% block content %}
 <p>
-    Tu jest Edytor ;)
+
+    Tu jest Edytor ;)<br />
+    Lista prac dostępnych w systemie.
+    {% for entity in entities %}
+        <tr>
+
+            <th>{{ entity.work }}</th>
+            <th></th>
+        </tr>
 
 </p>
 {% endblock %}
