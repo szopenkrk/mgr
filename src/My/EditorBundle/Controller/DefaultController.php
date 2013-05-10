@@ -9,11 +9,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/editor")
      * @Template()
      */
-    public function indexAction($name)
+   /* public function indexAction()
     {
-        return array('name' => $name);
-    }
+
+        /**
+         * @Route("/editor2.html", name="url_editor2")
+         * @Template()
+         *//*
+        public function editorAction(){
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $entities = $em->getReposytory('MyWorkBundle:Work')->findAll();
+
+        return array('entities' => $entities);
+        }
+    }*/
 }

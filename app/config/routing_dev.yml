@@ -18,3 +18,4 @@ MyWorkBundle:
     resource: "@MyWorkBundle/Controller/"
     type: annotation
     prefix: /
+

@@ -1,0 +1,11 @@
+{% extends ':My\WorkBundle:layout.html.twig:' %}
+{% block body  %}
+Lista dostępnych prac
+    <ul>
+        {%  for praca in entities %}
+            <li>
+                {{ praca.caption }}
+            </li>
+        {% end for %}
+    </ul>
+{% endblock %}
