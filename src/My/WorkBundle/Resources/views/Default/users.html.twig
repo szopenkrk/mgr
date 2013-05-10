@@ -1,8 +1,25 @@
-{% extends "MyWorkBundle::layout2.html.twig" %}
+{% extends "MyWorkBundle::layout.html.twig" %}
 
 {% block body %}
+    {% block container %}
+        Panel podglądu dostępnych użytkowników <br /><br />
+            <table>
+                <thead>
+                <tr>
 
-{% block content %}
-{% endblock %}
+                    <th>Login</th>
+                    <th>Hasło</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
 
+                        <th>{{ entity.username }}</th>
+                        <th>--hashed--</th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    {% endblock %}
 {% endblock %}

@@ -64,8 +64,15 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
         $entities = $em->getRepository('MyWorkBundle:Work')->findAll();
+
         return array('entities' => $entities);
+
     }
+
+
+
+
+
     /**
      * @Route("/rewiever.html", name="url_rewiever")
      * @Template()

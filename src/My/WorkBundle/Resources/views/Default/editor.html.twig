@@ -1,16 +1,15 @@
 {% extends "MyWorkBundle::layout.html.twig" %}
 
-{% block content %}
-<p>
+{% block body %}
 
-    Tu jest Edytor ;)<br />
-    Lista prac dostępnych w systemie.
-    {% for entity in entities %}
-        <tr>
+    {% block container %}
+        <ul>
+            {%  for entitie in entities %}
+                <li>
+                    {{ entitie.title }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
 
-            <th>{{ entity.work }}</th>
-            <th></th>
-        </tr>
-
-</p>
 {% endblock %}

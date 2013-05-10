@@ -9,6 +9,7 @@
             <div id="header">
                 <div class="baner"><img src="{{asset('images/head.jpg')}}"></div>
                 <div class="menu">
+
                     <ul>
                         <li><a href="{{ path('url_panel') }}">Panel</a></li>
                         <li><a href="{{ path('url_autor') }}">Autor</a></li>
@@ -19,15 +20,17 @@
                         <li><a href="profile">Twój profilu</a></li>
                         <li><a href="profile/edit">Edycja profilu</a></li>
                         <li><a href="logout">Wyloguj</a></li>
-                        <li><a href="register">REJESTRACJA</a></li>
                     </ul>
                 </div>
             
                 <div id="center">
-                    {%block content%}
-                    {%endblock%}
+                    {% block container %}
+
+                    {% endblock %}
                 </div>
                 
         </div>
     </body>
 </html>
+
+
