@@ -28,17 +28,10 @@ class AreaOfInterest
      */
     private $contentAreaofintrest;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="areaofinterest")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
-     */
+
     protected $User;
 
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Work", inversedBy="areaofinterest")
-     * @ORM\JoinColumn(name="idwork", referencedColumnName="idWork")
-     */
+
 
     protected  $Work;
 

@@ -62,25 +62,15 @@ class Work
     /**
      * @var integer
      *
-     *  @ORM\ManyToOne(targetEntity="AreaOfInterest", inversedBy="work")
-     *  @ORM\JoinColumn(name="idAreaofintrest", referencedColumnName="idAreaofintrest")
-     */
-     protected $Areaofinterest;
-
-
-    /**
+     * @ORM\Column(name="idAreaofintrest", type="text", nullable=false)
      *
-     * @ORM\OneToMany(targetEntity="Attachments", mappedBy="Work")
-     * @ORM\JoinColumn(name="idAttachments", referencedColumnName="idAttachments"),
-     * @ORM\JoinColumn(name="content_attachments", referencedColumnName="content_attachments")
      */
+     protected $Areaofinterest = 0;
+
+
       protected $Attachments;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Author", inversedBy="Work")
-     * @ORM\Column(name="id_author", type="integer", nullable=false)
-     */
-    protected $Author;
+        protected $Author;
 
     /**
      * @var integer
