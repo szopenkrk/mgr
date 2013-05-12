@@ -10,7 +10,7 @@
                 <li>
                     {{ entitie.idwork }}
                     {{ entitie.title }}
-                    <a href="./uploads/{{ entitie.path }}">Link</a>
+                    <a href="{{  asset('uploads/documents/') }}{{  entitie.path }}">Link do pracy</a>
                 </li>
             {% endfor %}
         </ul>
