@@ -3,20 +3,29 @@
 {% block body %}
     
     {% block container %}
-       <b> Panel Edytora <br />
+       <b> Panel Edytora <br /><br />
         1. wybierz pracę.<br />
         2. Wyświetl jej zawartość <br />
         3. Wypełnij notę edytorską dla pracy<br /></b>
-        <ul>
+
+        <table style="margin-top:30px; border: 2px;">
+        <tr>
+           <b>
+            <td>Id Pracy</td>
+            <td>Tytuł Pracy</td>
+            <td>Link do pracy</td>
+            <td>Dodatkowe opcje</td>
+            </b>
+        </tr>
             {%  for entitie in entities %}
-                <li>
-                    {{ entitie.idwork }}
-                    {{ entitie.title }}
-                    <a href="{{  asset('uploads/documents/') }}{{  entitie.path }}">Link do pracy</a>
-                    <a href="">Dodaj Notę Edytorską</a>
-                </li>
+            <tr>
+                <td> {{ entitie.idwork }}</td>
+                <td>{{ entitie.title }}</td>
+                <td><a href="{{  asset('uploads/documents/') }}{{  entitie.path }} "target=_blank>Link do pracy</a></td>
+                <td><a href="">Dodaj Notę Edytorską</a></td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
     {% endblock %}
 
 {% endblock %}
