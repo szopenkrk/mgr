@@ -1,7 +1,20 @@
 {% extends "MyWorkBundle::layout.html.twig" %}
 
-{% block content %}
+{% block body %}
+
+    {% block container %}
 <p>
     Tu jest Rewiever ;)
+        <ul>
+            {%  for entitie in entities %}
+                <li>
+                    {{ entitie.idwork }}
+                    {{ entitie.title }}
+                    <a href="./uploads/{{ entitie.path }}">Link</a>
+                </li>
+            {% endfor %}
+        </ul>
 </p>
+    {% endblock %}
+
 {% endblock %}

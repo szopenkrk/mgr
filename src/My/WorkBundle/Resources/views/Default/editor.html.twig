@@ -1,12 +1,15 @@
 {% extends "MyWorkBundle::layout.html.twig" %}
 
 {% block body %}
-
+    
     {% block container %}
+        Panel Edytora<br />
         <ul>
             {%  for entitie in entities %}
                 <li>
+                    {{ entitie.idwork }}
                     {{ entitie.title }}
+                    <a href="uploads/{{ entitie.path }}">Link</a>
                 </li>
             {% endfor %}
         </ul>

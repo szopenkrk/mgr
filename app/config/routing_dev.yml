@@ -14,8 +14,3 @@ _configurator:
 _main:
     resource: routing.yml
 
-MyWorkBundle:
-    resource: "@MyWorkBundle/Controller/"
-    type: annotation
-    prefix: /
-

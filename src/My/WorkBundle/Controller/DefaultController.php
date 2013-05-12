@@ -79,7 +79,10 @@ class DefaultController extends Controller
      */
     public function rewieverAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getEntityManager();
+        $entities = $em->getRepository('MyWorkBundle:Work')->findAll();
+
+        return array('entities' => $entities);
     }
     /**
      * @Route("users.html", name="url_users")
