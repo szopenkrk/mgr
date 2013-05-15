@@ -1,0 +1,15 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+    {% block container %}
+        <p>
+            System  Edycji prac Naukowych.
+        <form action="#" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+
+            <input type="submit" value="Zapisz dokument" />
+        </form>
+        </p>
+    {% endblock %}
+
+{% endblock %}

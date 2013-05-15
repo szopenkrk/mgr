@@ -5,8 +5,8 @@ namespace My\WorkBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Acme\TaskBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
+use My\WorkBundle\Entity\Review;
 use My\WorkBundle\Entity\Work;
 
 class DefaultController extends Controller
@@ -69,10 +69,6 @@ class DefaultController extends Controller
 
     }
 
-
-
-
-
     /**
      * @Route("/rewiever.html", name="url_rewiever")
      * @Template()
@@ -131,6 +127,33 @@ class DefaultController extends Controller
             ->getForm();
         return $form;
     }
+
+
+    /**
+     * @Route("/panelreview.html", name="url_panelreview")
+     * @Template()
+     */
+        public function panelreviewAction(){
+            $document = new Review();
+            $form = $this->createFormBuilder($document)
+            ->add('WorkWork', 'text')
+            ->add('DateReview', 'date')
+            ->getForm();
+
+            if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+            if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($document);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl("url_panelreview"));
+            }
+            }
+
+            return array('form' => $form->createView());
+        }
 
 
 }

@@ -22,7 +22,7 @@
                 <td> {{ entitie.idwork }}</td>
                 <td>{{ entitie.title }}</td>
                 <td><a href="{{  asset('uploads/documents/') }}{{  entitie.path }} "target=_blank>Link do pracy</a></td>
-                <td><a href="">Dodaj Notę Edytorską</a></td>
+                <td><a href="{{  path('url_panelreview') }}">Prace</a></td>
             </tr>
             {% endfor %}
         </table>
