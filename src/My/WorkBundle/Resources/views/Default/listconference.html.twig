@@ -1,0 +1,18 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% block container %}
+        Lista dostępnych konferencji
+        <ul>
+            {%  for entitie in entities %}
+                <li>
+                    {{ entitie.titleConference }}
+                    {{ entitie.placeConference }}
+                    {{ entitie.dateConference }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+
+{% endblock %}

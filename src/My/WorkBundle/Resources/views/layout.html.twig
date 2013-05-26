@@ -20,7 +20,8 @@
 
                         <li><a href="profile">Twój profilu</a></li>
                         <li><a href="profile/edit">Edycja profilu</a></li>
-                        <li><a href="logout">Wyloguj</a></li>
+                        <li><a href="logout">Wyloguj</a></li><br />
+                        <li><a href="{{ path('url_conference') }}">Konferencje</a></li>
                     </ul>
                 </div>
             
@@ -29,7 +30,27 @@
 
                     {% endblock %}
                 </div>
-                
+                <div id="footer">
+                    <div class="menu1">
+                        Główny Panel<br />
+                        <a href="{{ path('url_panel') }}">Panel</a>
+                    </div>
+                    <div class="menu2">
+                        <a href="{{ path('url_work') }}">Prace</a><br/>
+                        <a href="{{ path('url_conference') }}">Konferencje</a><br />
+
+                    </div>
+                    <div class="menu3">
+                        <a href="logout">Wyloguj</a><br />
+                        Edytuj Profil<br>
+                        Twój Profil<br>
+
+                    </div>
+                    <div class="opis">
+                        Praca Magiesterska Kochański Karol - IS WIMIIP AGH
+                    </div>
+
+                </div>
         </div>
     </body>
 </html>

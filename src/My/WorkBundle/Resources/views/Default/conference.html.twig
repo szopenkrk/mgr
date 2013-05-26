@@ -1,0 +1,18 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% block container %}
+        Witaj Właśnie dotarłeś do modułu który pozwala na zobaczenie<br />
+        Dostępnych Konferencji<br/>
+        <div style="margin-top:10px; margin-left:10px;">
+            <b>
+                <a href="{{ path('url_listconference') }}">DOSTĘPNE KONFERENCJE</a>
+            <br />
+                <a href="{{ path('url_addconference') }}">DODAWANIE KONFERENCJI</a>
+            </b>
+        </div>
+
+    {% endblock %}
+
+{% endblock %}

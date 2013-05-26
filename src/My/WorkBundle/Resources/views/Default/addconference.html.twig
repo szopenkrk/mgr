@@ -1,0 +1,16 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% block container %}
+        <p>
+            System  Dodawania konferencji
+        <form action="#" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+
+            <input type="submit" value="Zapisz konferencję" />
+        </form>
+        </p>
+    {% endblock %}
+
+{% endblock %}

@@ -4,7 +4,7 @@ body{
 }
 .baner{
     margin: 0 auto;
-    float:laft;
+    float:left;
 }
 #container{
     margin: 0 auto;
@@ -15,7 +15,7 @@ body{
 .menu{
     width:700px;
     float:left;
-    margin:10px auto;
+    margin:10px 10px 5px -15px;
     color: #000000;
     font-weight: bold;
 }
@@ -39,6 +39,7 @@ body{
 }
 
 #center{
+
     float:left;
     margin:auto;
     padding-left: 40px;
@@ -52,4 +53,58 @@ body{
     margin-top: 50px;
     margin-left:auto;
     margin-right:auto;
+}
+
+#footer{
+    float:left;
+    font-family: Tahoma;
+    font-size:14px;
+    width: 700px;
+    height: auto;
+    background-color: #0c122b;
+    margin-top:40px;
+    margin-bottom: -55px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+#footer a{
+    text-decoration: none;
+    color:#ffffff;
+}
+#footer a:hover{
+    color: #0099FF;
+}
+
+#footer .menu1{
+    float:left;
+    width:200px;
+    margin-left:55px;
+    margin-top:25px;
+    color: #ffffff;
+}
+#footer .menu2{
+    float:left;
+    width:200px;
+    margin-left:25px;
+    margin-top:25px;
+    color: #ffffff;
+}
+#footer .menu3{
+    float:left;
+    width:150px;
+    margin-left:25px;
+    margin-top:25px;
+    color: #ffffff;
+}
+
+#footer .opis{
+    margin-left:170px;
+    margin-top:35px;
+    margin-bottom:10px;
+    color:#ffffff;
+    width:100%; float:left;
 }

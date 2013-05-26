@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use My\WorkBundle\Entity\Review;
 use My\WorkBundle\Entity\Work;
+use My\WorkBundle\Entity\Conference;
 
 class DefaultController extends Controller
 {
@@ -19,6 +20,7 @@ class DefaultController extends Controller
     {
         return array();
     }
+
     /**
      * @Route("/panel.html", name="url_panel")
      * @Template()
@@ -155,5 +157,49 @@ class DefaultController extends Controller
             return array('form' => $form->createView());
         }
 
+    /**
+     * @Route("/conference.html", name="url_conference")
+     * @Template()
+     */
+    public function conferenceAction(){
+        return array();
+    }
 
+    /**
+     * @Route("/addconference.html", name="url_addconference")
+     * @Template()
+     */
+    public function addconferenceAction(){
+        $document = new Conference();
+        $form = $this->createFormBuilder($document)
+            ->add('titleConference', 'text')
+            ->add('placeConference', 'text')
+            ->add('dateConference', 'date')
+            ->getForm();
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($document);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl("url_addconference"));
+            }
+        }
+
+        return array('form' => $form->createView());
+    }
+    /**
+     * @Route("/listconference.html", name="url_listconference")
+     * @Template()
+     */
+    public function listconferenceAction(){
+        $em = $this->getDoctrine()->getEntityManager();
+        $entities = $em->getRepository('MyWorkBundle:Conference')->findAll();
+
+        return array('entities' => $entities);
+    }
 }
+
