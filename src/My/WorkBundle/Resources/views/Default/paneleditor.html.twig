@@ -1,0 +1,24 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+    {% block container %}
+        <p>
+            System  Edycji prac Naukowych.
+        <form action="#" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+        <br>
+        Uwagi Edytorskie<br />
+            <input type="text" name="uwagi" style="width:300px; height:90px;" /><br />
+        <br>
+        Dodatkowe Opcje<br />
+        <input type="checkbox" name="nazwa" value="wartość" checked="checked" />Praca Zaakceptowana<br >
+        <input type="checkbox" name="nazwa" value="wartość" checked="checked" />Zwrot Pracy<br><br>
+
+        Wybierz Recenzenta dla pracy<br>
+        <input type="text" name="recenzent" value="recenzent" /><br /><br>
+        <input type="submit" value="Zapisz dokument" />
+        </form>
+        </p>
+    {% endblock %}
+
+{% endblock %}
