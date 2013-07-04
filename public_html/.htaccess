@@ -1,10 +1,12 @@
-<IfModule mod_rewrite.c>
+php_flag eaccelerator.enable 0
+
+#<IfModule mod_rewrite.c>
     RewriteEngine On
 
     #<IfModule mod_vhost_alias.c>
-        RewriteBase /
+        RewriteBase /mgr/public_html/
     #</IfModule>
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ app_dev.php [QSA,L]
-</IfModule>
+#</IfModule>

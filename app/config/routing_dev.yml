@@ -17,3 +17,8 @@ _main:
 review_new:
         pattern:   /
         defaults:  { _controller: MyWorkBundle:Default:panelreview }
+
+panelrewiewer:
+        pattern:   /
+        defaults:  { _controller: MyWorkBundle:Default:panelrewiewer }
+

@@ -11,6 +11,8 @@ group:
 #        created: The group has been created
 #        deleted: The group has been deleted
 
+"Bad credentials": Utilizador e/ou password inválidos
+
 # Security
 security:
     login:
@@ -63,7 +65,7 @@ resetting:
         username: "Utilizador:"
         submit: Recuperar password
     reset:
-        submit: Alterar passord
+        submit: Alterar password
     #flash:
     #    success: The password has been reset successfully
     email:

@@ -1,0 +1,20 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% block container %}
+        <p>
+            <b>Bardzo dziękujemy za dodanie czasopisma naukowego,</b><br>
+            Wybierz kolejne działanie:<br>
+
+        <ul>
+            <li>Zobacz dodane przez siebie prace</li>
+            <li><a href="{{ path('url_autor') }}">Autor</a></li>
+            <li><a href="{{ path('url_editor') }}">Edytor</a></li>
+            <li><a href="{{ path('url_rewiever') }}">Rewiever</a></li>
+            <li><a href="logout">Wyloguj</a></li>
+        </ul>
+        </p>
+    {% endblock %}
+
+{% endblock %}

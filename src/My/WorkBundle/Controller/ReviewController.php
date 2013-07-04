@@ -1,12 +1,23 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Karol
- * Date: 03.07.13
- * Time: 19:46
- * To change this template use File | Settings | File Templates.
- */
-class ReviewController
-{
+namespace My\WorkBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
+use My\WorkBundle\Entity\Review;
+
+class ReviewController extends Controller
+{
+    /**
+     * @Route(pattern="/work/{id}",name="review_work")
+     * @Template()
+     */
+    public function workAction($id) {
+        $work = $this->getDoctrine()
+            ->getEntityManagerForClass('MyWorkBundle:Work')
+            ->getRepository('MyWorkBundle:Work')
+            ->find($id);
+        return array('work' => $work);
+    }
 }

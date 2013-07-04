@@ -92,4 +92,15 @@ class Review
     {
         return $this->workWork;
     }
+
+    /**
+     * Get rewiewerWork
+     *
+     * @return integer
+     */
+    public function getRewiewerWork()
+    {
+        return $this->rewiewerWork;
+    }
+
 }

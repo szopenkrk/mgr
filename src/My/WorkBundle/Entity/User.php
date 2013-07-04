@@ -34,8 +34,5 @@ class User extends BaseUser {
         return $this->id;
     }
 
-    /**
-     * @ORM\OneToMany(targetEntity="areaofinterest", mappedBy="user")
-     */
-    protected $areaofinterest;
+
 }

@@ -3,7 +3,7 @@
 {% block body %}
 
     {% block container %}
-        <b> Panel Edytora <br /><br />
+        <b> Panel Recenzenta <br /><br />
             1. wybierz pracę.<br />
             2. Wyświetl jej zawartość <br />
             3. Wypełnij oceń pracę<br /></b>
@@ -21,8 +21,9 @@
                 <tr>
                     <td> {{ entitie.idwork }}</td>
                     <td>{{ entitie.title }}</td>
+
                     <td><a href="{{  asset('uploads/documents/') }}{{  entitie.path }} "target=_blank>Link do pracy</a></td>
-                    <td><a href="">Dodaj Ocenę dla pracy</a></td>
+                    <td><a href="{{  path('review_work',{id: entitie.getIdWork()}) }}">Dodaj Ocenę</a></td>
                 </tr>
             {% endfor %}
         </table>

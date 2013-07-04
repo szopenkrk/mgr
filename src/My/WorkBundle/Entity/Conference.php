@@ -47,21 +47,21 @@ class Conference
      *
      * @ORM\Column(name="id_user_cd", type="integer", nullable=false)
      */
-    private $idUserCd;
+    private $idUserCd = 1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_work", type="integer", nullable=false)
      */
-    private $idWork;
+    private $idWork = 1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_author", type="integer", nullable=false)
      */
-    private $idAuthor;
+    private $idAuthor = 1;
 
 
 

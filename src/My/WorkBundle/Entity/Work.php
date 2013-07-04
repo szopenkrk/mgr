@@ -68,9 +68,13 @@ class Work
      protected $Areaofinterest = 0;
 
 
-      protected $Attachments;
+     protected $Attachments;
 
-        protected $Author;
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="works")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    protected $Author;
 
     /**
      * @var integer
@@ -229,7 +233,6 @@ class Work
     {
         return $this->workDate;
     }
-
     /**
      * Set contentWork
      *
@@ -390,4 +393,16 @@ class Work
     {
         return $this->path;
     }
+
+    public function setAuthor($Author)
+    {
+        $this->Author = $Author;
+    }
+
+    public function getAuthor()
+    {
+        return $this->Author;
+    }
+
+
 }

@@ -9,7 +9,7 @@
                 <li>
                     {{ entitie.titleConference }}
                     {{ entitie.placeConference }}
-                    {{ entitie.dateConference }}
+                    {{ entitie.dateConference|date('Y-m-d') }}
                 </li>
             {% endfor %}
         </ul>

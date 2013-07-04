@@ -30,6 +30,17 @@ class DefaultController extends Controller
         return array();
     }
     /**
+     * @Route("/thanks.html", name="url_thanks")
+     * @Template()
+     */
+    public function thanksAction()
+    {
+        return array();
+    }
+
+
+
+    /**
      * @Route("/autor.html", name="url_autor")
      * @Template()
      */
@@ -44,15 +55,18 @@ class DefaultController extends Controller
             ->getForm()
         ;
 
+        $loggedUser = $this->getUser();
+
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-
+                /** @var $document \My\WorkBundle\Entity\Work */
+                $document->setAuthor($loggedUser);
                 $em->persist($document);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl("url_autor"));
+                return $this->redirect($this->generateUrl("url_thanks"));
             }
         }
 
@@ -65,7 +79,7 @@ class DefaultController extends Controller
     public function editorAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $entities = $em->getRepository('MyWorkBundle:Work')->findAll();
+        $entities = $this->_getWorksExcludingLoggedUser($em);
 
         return array('entities' => $entities);
 
@@ -78,10 +92,19 @@ class DefaultController extends Controller
     public function rewieverAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $entities = $em->getRepository('MyWorkBundle:Work')->findAll();
-
+        $entities = $this->_getWorksExcludingLoggedUser($em);
+        //var_dump($entities);die;
         return array('entities' => $entities);
     }
+
+    protected function _getWorksExcludingLoggedUser($em)
+    {
+        $entities = $em->getRepository('MyWorkBundle:Work')->createQueryBuilder('w')
+            ->where('w.Author != ?1 or w.Author is null')
+            ->setParameter(1, $this->getUser())->getQuery()->getResult();
+        return $entities;
+    }
+
     /**
      * @Route("users.html", name="url_users")
      * @Template()
@@ -132,10 +155,10 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/panelreview.html", name="url_panelreview")
+     * @Route("/paneleditor.html", name="url_paneleditor")
      * @Template()
      */
-        public function panelreviewAction(){
+        public function paneleditorAction(){
             $document = new Review();
             $form = $this->createFormBuilder($document)
             ->add('WorkWork', 'text')
@@ -150,12 +173,14 @@ class DefaultController extends Controller
             $em->persist($document);
             $em->flush();
 
-            return $this->redirect($this->generateUrl("url_panelreview"));
+            return $this->redirect($this->generateUrl("url_paneleditor"));
             }
             }
 
             return array('form' => $form->createView());
         }
+
+
 
     /**
      * @Route("/conference.html", name="url_conference")

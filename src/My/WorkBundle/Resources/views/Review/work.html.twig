@@ -1,0 +1,8 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% block container %}
+        Oceniasz: {{ work.getTitle() }}
+    {% endblock %}
+{% endblock %}

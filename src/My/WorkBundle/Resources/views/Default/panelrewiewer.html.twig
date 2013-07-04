@@ -1,0 +1,86 @@
+{% extends "MyWorkBundle::layout.html.twig" %}
+
+{% block body %}
+    {% block container %}
+        <p>
+            System  Recenzji Prac Naukowych.
+            <form>
+                Ocena pracy:<br>
+                <select name="kierunek">
+                    <option value="1" name="ocena">1</option>
+                    <option value="2" name="ocena">2</option>
+                    <option value="3" name="ocena">3</option>
+                    <option value="4" name="ocena">4</option>
+                    <option value="5" name="ocena">5</option>
+                    <option value="6" name="ocena">6</option>
+                 </select><br>
+                Komentarz: <br>
+                <input type="" name=""><br>
+                Co praca wnosi nowego:<br>
+        <select name="kierunek">
+            <option value="1" name="ocena">1</option>
+            <option value="2" name="ocena">2</option>
+            <option value="3" name="ocena">3</option>
+            <option value="4" name="ocena">4</option>
+            <option value="5" name="ocena">5</option>
+            <option value="6" name="ocena">6</option>
+        </select><br>
+                Znaczenie uzyskanych wyników:<br>
+        <select name="kierunek">
+            <option value="1" name="ocena">1</option>
+            <option value="2" name="ocena">2</option>
+            <option value="3" name="ocena">3</option>
+            <option value="4" name="ocena">4</option>
+            <option value="5" name="ocena">5</option>
+            <option value="6" name="ocena">6</option>
+        </select><br>
+                Zaprezentowanie wyników:<br>
+        <select name="kierunek">
+            <option value="1" name="ocena">1</option>
+            <option value="2" name="ocena">2</option>
+            <option value="3" name="ocena">3</option>
+            <option value="4" name="ocena">4</option>
+            <option value="5" name="ocena">5</option>
+            <option value="6" name="ocena">6</option>
+        </select><br>
+                Jakość wyników:<br>
+        <select name="kierunek">
+            <option value="1" name="ocena">1</option>
+            <option value="2" name="ocena">2</option>
+            <option value="3" name="ocena">3</option>
+            <option value="4" name="ocena">4</option>
+            <option value="5" name="ocena">5</option>
+            <option value="6" name="ocena">6</option>
+        </select><br>
+                Wybór odniesień:<br>
+        <select name="kierunek">
+            <option value="1" name="ocena">1</option>
+            <option value="2" name="ocena">2</option>
+            <option value="3" name="ocena">3</option>
+            <option value="4" name="ocena">4</option>
+            <option value="5" name="ocena">5</option>
+            <option value="6" name="ocena">6</option>
+        </select><br>
+                Czy praca spełnia wymogi etyczne:<br>
+        <select name="kierunek">
+            <option value="TAK" name="ocena">TAK</option>
+            <option value="NIE" name="ocena">NIE</option>
+        </select><br>
+
+            Decyzja: <br>
+        <select name="kierunek"><br>
+            <option value="TAK" name="ocena">zaakceptować pracę ?</option>
+            <option value="NIE" name="ocena">zaakceptować po uwzględnieniu poprawek,</option>
+            <option value="NIE" name="ocena">ponownie rozważyć po dokonaniu istotnych poprawek</option>
+            <option value="NIE" name="ocena">odrzucić</option>
+        </select><br>
+
+          <input type="submit" name="submit" value="wyślij">
+
+
+
+
+    </form>
+    {% endblock %}
+
+{% endblock %}
