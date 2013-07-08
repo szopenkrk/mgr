@@ -26,7 +26,7 @@ class Reviewer
      *
      * @ORM\Column(name="id_areaofinterest", type="integer", nullable=false)
      */
-    private $idAreaofinterest;
+    private $idAreaofinterest= '0';
 
     /**
      * @var integer

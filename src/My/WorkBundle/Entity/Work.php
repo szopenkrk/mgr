@@ -59,16 +59,11 @@ class Work
      */
      private $rewiewerWork = '';
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="idAreaofintrest", type="text", nullable=false)
-     *
-     */
-     protected $Areaofinterest = 0;
+
+     protected $Areaofinterest = '0';
 
 
-     protected $Attachments;
+     protected $Attachments= '0';
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="works")
