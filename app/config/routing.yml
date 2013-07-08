@@ -47,6 +47,9 @@ review_new:
         pattern:   /
         defaults:  { _controller: MyWorkBundle:Default:panelreview }
 
+work:
+    pattern:  /
+    defaults:  { _controller: MyWorkBundle:Review:work }
 
 
 # Internal routing configuration to handle ESI

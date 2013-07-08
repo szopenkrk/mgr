@@ -6,11 +6,14 @@
         Oceniasz: {{ work.getTitle() }}
 
 
-        <form action="{{ path('work_new') }}" method="post" {{ form_enctype(form) }}>
+
+        <form action="#" method="post" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
 
-            <input type="submit" />
+            <input type="submit" value="Zapisz" />
         </form>
+
+
 
     {% endblock %}
 {% endblock %}

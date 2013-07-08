@@ -155,7 +155,7 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/paneleditor.html", name="url_paneleditor")
+     * @Route("/work.html.twig", name="url_work")
      * @Template()
      */
         public function paneleditorAction(){
@@ -226,5 +226,8 @@ class DefaultController extends Controller
 
         return array('entities' => $entities);
     }
+
+
+
 }
 

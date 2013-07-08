@@ -25,10 +25,29 @@ class ReviewController extends Controller
      * @Route(pattern="/work/{id}",name="work_new")
      * @Template()
      */
+    public function addreviewAction(Request $request)
+    {
+        $defaultData = array(
+            'username' => 'Foo'
+        );
+        $form = $this->createFormBuilder($defaultData)
+            ->add('WorkWork', 'text')
+            ->add('DateReview', 'date')
+            ->getForm();
+
+    }
+
+   /* public function rewievAction($id){
+        $form = $this->createFormBuilder()
+        ->add('WorkWork', 'text')
+        ->add('DateReview', 'date')
+        ->getForm();
+        return $form;
+    }*/
+/*
     public function rewievAction(){
         $document = new Review();
         $form = $this->createFormBuilder($document)
-            ->add($id)
             ->add('WorkWork', 'text')
             ->add('DateReview', 'date')
             ->getForm();
@@ -41,12 +60,10 @@ class ReviewController extends Controller
                 $em->persist($document);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl("url_thanks"));
+                return $this->redirect($this->generateUrl("url_panel"));
             }
         }
 
         return array('form' => $form->createView());
-    }
-
-
+    }*/
 }
