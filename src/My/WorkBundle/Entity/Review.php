@@ -35,7 +35,12 @@ class Review
      */
     private $workWork;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_reviewer", type="text", nullable=false)
+     */
+    private $reviewer;
 
     /**
      * Get idReview
@@ -102,5 +107,14 @@ class Review
     {
         return $this->rewiewerWork;
     }
+    /**
+     * Get reviewer
+     *
+     * @return string
+     */
 
+    public function getReviewer()
+    {
+        return $this->reviewer;
+    }
 }

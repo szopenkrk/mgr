@@ -155,7 +155,7 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/work.html.twig", name="url_work")
+     * @Route("/paneleditor.html", name="url_paneleditor")
      * @Template()
      */
         public function paneleditorAction(){
@@ -163,17 +163,18 @@ class DefaultController extends Controller
             $form = $this->createFormBuilder($document)
             ->add('WorkWork', 'text')
             ->add('DateReview', 'date')
+            ->add('reviewer', 'text')
             ->getForm();
 
             if ($this->getRequest()->isMethod('POST')) {
-            $form->bind($this->getRequest());
-            if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+                $form->bind($this->getRequest());
+                if ($form->isValid()) {
+                 $em = $this->getDoctrine()->getManager();
 
-            $em->persist($document);
-            $em->flush();
+                $em->persist($document);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl("url_paneleditor"));
+                return $this->redirect($this->generateUrl("url_thanks"));
             }
             }
 

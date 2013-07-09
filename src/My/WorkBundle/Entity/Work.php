@@ -62,6 +62,100 @@ class Work
 
      protected $Areaofinterest = '0';
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reviewer", type="text", nullable=false)
+     */
+    private $reviewer;
+
+    /**
+     * Set reviewer
+     *
+     * @param string reviewer
+     * @return reviewer
+     */
+    public function setReviewer($reviewer)
+    {
+        $this->reviewer = $reviewer;
+
+        return $this;
+    }
+
+    /**
+     * Get reviewer
+     *
+     * @return string
+     */
+    public function getReviewer()
+    {
+        return $this->reviewer;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="review", type="text", nullable=false)
+     */
+    private $review;
+
+    /**
+     * Set review
+     *
+     * @param string review
+     * @return review
+     */
+    public function setReview($review)
+    {
+        $this->review = $review;
+
+        return $this;
+    }
+
+    /**
+     * Get review
+     *
+     * @return string
+     */
+
+    public function getReview()
+    {
+        return $this->review;
+    }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="editor", type="text", nullable=false)
+     */
+    private $editor;
+
+    /**
+     * Set editor
+     *
+     * @param string editor
+     * @return editor
+     */
+    public function seteditor($editor)
+    {
+        $this->editor = $editor;
+
+        return $this;
+    }
+
+    /**
+     * Get editor
+     *
+     * @return string
+     */
+    public function geteditor()
+    {
+        return $this->editor;
+    }
+
+
+
+
+
 
      protected $Attachments= '0';
 

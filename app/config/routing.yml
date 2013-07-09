@@ -51,6 +51,12 @@ work:
     pattern:  /
     defaults:  { _controller: MyWorkBundle:Review:work }
 
+_rewiev_create:
+    pattern:  /work/{id}
+    defaults: { _controller: MyWorkBundle:Rewiev:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+
 
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
