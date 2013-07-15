@@ -163,7 +163,6 @@ class DefaultController extends Controller
             $form = $this->createFormBuilder($document)
             ->add('WorkWork', 'text')
             ->add('DateReview', 'date')
-            ->add('reviewer', 'text')
             ->getForm();
 
             if ($this->getRequest()->isMethod('POST')) {
@@ -211,7 +210,7 @@ class DefaultController extends Controller
                 $em->persist($document);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl("url_addconference"));
+                return $this->redirect($this->generateUrl("url_listconference"));
             }
         }
 

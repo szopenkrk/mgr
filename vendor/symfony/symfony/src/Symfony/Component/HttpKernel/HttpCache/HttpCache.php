@@ -193,8 +193,6 @@ class HttpCache implements HttpKernelInterface, TerminableInterface
             $response = $this->lookup($request, $catch);
         }
 
-        $response->isNotModified($request);
-
         $this->restoreResponseBody($request, $response);
 
         $response->setDate(new \DateTime(null, new \DateTimeZone('UTC')));
@@ -204,14 +202,16 @@ class HttpCache implements HttpKernelInterface, TerminableInterface
         }
 
         if (null !== $this->esi) {
-            $this->esiCacheStrategy->add($response);
-
             if (HttpKernelInterface::MASTER_REQUEST === $type) {
                 $this->esiCacheStrategy->update($response);
+            } else {
+                $this->esiCacheStrategy->add($response);
             }
         }
 
         $response->prepare($request);
+
+        $response->isNotModified($request);
 
         return $response;
     }
@@ -261,6 +261,15 @@ class HttpCache implements HttpKernelInterface, TerminableInterface
         if ($response->isSuccessful() || $response->isRedirect()) {
             try {
                 $this->store->invalidate($request, $catch);
+
+                // As per the RFC, invalidate Location and Content-Location URLs if present
+                foreach (array('Location', 'Content-Location') as $header) {
+                    if ($uri = $response->headers->get($header)) {
+                        $subRequest = $request::create($uri, 'get', array(), array(), array(), $request->server->all());
+
+                        $this->store->invalidate($subRequest);
+                    }
+                }
 
                 $this->record($request, 'invalidate');
             } catch (\Exception $e) {

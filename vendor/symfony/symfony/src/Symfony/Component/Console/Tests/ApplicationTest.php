@@ -342,6 +342,16 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testFindNamespaceDoesNotFailOnDeepSimilarNamespaces()
+    {
+        $application = $this->getMock('Symfony\Component\Console\Application', array('getNamespaces'));
+        $application->expects($this->once())
+            ->method('getNamespaces')
+            ->will($this->returnValue(array('foo:sublong', 'bar:sub')));
+
+        $this->assertEquals('foo:sublong', $application->findNamespace('f:sub'));
+    }
+
     public function testSetCatchExceptions()
     {
         $application = $this->getMock('Symfony\Component\Console\Application', array('getTerminalWidth'));
@@ -489,6 +499,21 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
         $tester->run(array('command' => 'foo:bar', '-n' => true), array('decorated' => false));
         $this->assertSame('called'.PHP_EOL, $tester->getDisplay(), '->run() does not call interact() if -n is passed');
+    }
+
+    public function testRunReturnsIntegerExitCode()
+    {
+        $exception = new \Exception('', 4);
+
+        $application = $this->getMock('Symfony\Component\Console\Application', array('doRun'));
+        $application->setAutoExit(false);
+        $application->expects($this->once())
+             ->method('doRun')
+             ->will($this->throwException($exception));
+
+        $exitCode = $application->run(new ArrayInput(array()), new NullOutput());
+
+        $this->assertSame(4, $exitCode, '->run() returns integer exit code extracted from raised exception');
     }
 
     /**

@@ -583,6 +583,41 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->stopTrustingProxyData();
     }
 
+    public function testGetPort()
+    {
+        $request = Request::create('http://example.com', 'GET', array(), array(), array(), array(
+            'HTTP_X_FORWARDED_PROTO' => 'https',
+            'HTTP_X_FORWARDED_PORT' => '443'
+        ));
+        $port = $request->getPort();
+
+        $this->assertEquals(80, $port, 'Without trusted proxies FORWARDED_PROTO and FORWARDED_PORT are ignored.');
+
+        Request::setTrustedProxies(array('1.1.1.1'));
+        $request = Request::create('http://example.com', 'GET', array(), array(), array(), array(
+            'HTTP_X_FORWARDED_PROTO' => 'https',
+            'HTTP_X_FORWARDED_PORT'  => '8443'
+        ));
+        $port = $request->getPort();
+
+        $this->assertEquals(8443, $port, 'With PROTO and PORT set PORT takes precedence.');
+
+        $request = Request::create('http://example.com', 'GET', array(), array(), array(), array(
+            'HTTP_X_FORWARDED_PROTO' => 'https'
+        ));
+        $port = $request->getPort();
+
+        $this->assertEquals(443, $port, 'With only PROTO set getPort() defaults to 443.');
+
+        $request = Request::create('http://example.com', 'GET', array(), array(), array(), array(
+            'HTTP_X_FORWARDED_PROTO' => 'http'
+        ));
+        $port = $request->getPort();
+
+        $this->assertEquals(80, $port, 'If X_FORWARDED_PROTO is set to http return 80.');
+        Request::setTrustedProxies(array());
+    }
+
     /**
      * @expectedException RuntimeException
      */
@@ -660,6 +695,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('88.88.88.88',              false, '88.88.88.88',  null,                                  null),
+            array('88.88.88.88',              true,  '88.88.88.88',  null,                                  null),
             array('127.0.0.1',                false, '127.0.0.1',    null,                                  null),
             array('::1',                      false, '::1',          null,                                  null),
             array('127.0.0.1',                false, '127.0.0.1',    '88.88.88.88',                         null),
@@ -668,6 +704,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             array('88.88.88.88',              true,  '123.45.67.89', '127.0.0.1, 87.65.43.21, 88.88.88.88', null),
             array('87.65.43.21',              true,  '123.45.67.89', '127.0.0.1, 87.65.43.21, 88.88.88.88', array('123.45.67.89', '88.88.88.88')),
             array('87.65.43.21',              false, '123.45.67.89', '127.0.0.1, 87.65.43.21, 88.88.88.88', array('123.45.67.89', '88.88.88.88')),
+            array('88.88.88.88',              true,  '123.45.67.89', '88.88.88.88',                         array('123.45.67.89', '88.88.88.88')),
+            array('88.88.88.88',              false, '123.45.67.89', '88.88.88.88',                         array('123.45.67.89', '88.88.88.88')),
         );
     }
 
@@ -1230,6 +1268,95 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
         // reset
         Request::setTrustedProxies(array());
+    }
+
+    /**
+     * @dataProvider iisRequestUriProvider
+     */
+    public function testIISRequestUri($headers, $server, $expectedRequestUri)
+    {
+        $request = new Request();
+        $request->headers->replace($headers);
+        $request->server->replace($server);
+
+        $this->assertEquals($expectedRequestUri, $request->getRequestUri(), '->getRequestUri() is correct');
+
+        $subRequestUri = '/bar/foo';
+        $subRequest = $request::create($subRequestUri, 'get', array(), array(), array(), $request->server->all());
+        $this->assertEquals($subRequestUri, $subRequest->getRequestUri(), '->getRequestUri() is correct in sub request');
+    }
+
+    public function iisRequestUriProvider()
+    {
+        return array(
+            array(
+                array(
+                    'X_ORIGINAL_URL' => '/foo/bar',
+                ),
+                array(),
+                '/foo/bar'
+            ),
+            array(
+                array(
+                    'X_REWRITE_URL' => '/foo/bar',
+                ),
+                array(),
+                '/foo/bar'
+            ),
+            array(
+                array(),
+                array(
+                    'IIS_WasUrlRewritten' => '1',
+                    'UNENCODED_URL' => '/foo/bar'
+                ),
+                '/foo/bar'
+            ),
+            array(
+                array(
+                    'X_ORIGINAL_URL' => '/foo/bar',
+                ),
+                array(
+                    'HTTP_X_ORIGINAL_URL' => '/foo/bar'
+                ),
+                '/foo/bar'
+            ),
+            array(
+                array(
+                    'X_ORIGINAL_URL' => '/foo/bar',
+                ),
+                array(
+                    'IIS_WasUrlRewritten' => '1',
+                    'UNENCODED_URL' => '/foo/bar'
+                ),
+                '/foo/bar'
+            ),
+            array(
+                array(
+                    'X_ORIGINAL_URL' => '/foo/bar',
+                ),
+                array(
+                    'HTTP_X_ORIGINAL_URL' => '/foo/bar',
+                    'IIS_WasUrlRewritten' => '1',
+                    'UNENCODED_URL' => '/foo/bar'
+                ),
+                '/foo/bar'
+            ),
+            array(
+                array(),
+                array(
+                    'ORIG_PATH_INFO' => '/foo/bar',
+                ),
+                '/foo/bar'
+            ),
+            array(
+                array(),
+                array(
+                    'ORIG_PATH_INFO' => '/foo/bar',
+                    'QUERY_STRING' => 'foo=bar',
+                ),
+                '/foo/bar?foo=bar'
+            )
+        );
     }
 }
 

@@ -12,6 +12,7 @@
 namespace Symfony\Component\Process\Tests;
 
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\RuntimeException;
 
 /**
  * @author Robert Schönthal <seroscho@googlemail.com>
@@ -44,6 +45,31 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($p->getTimeout());
     }
 
+    public function testStopWithTimeoutIsActuallyWorking()
+    {
+        if (defined('PHP_WINDOWS_VERSION_BUILD')) {
+            $this->markTestSkipped('Stop with timeout does not work on windows, it requires posix signals');
+        }
+        if (!function_exists('pcntl_signal')) {
+            $this->markTestSkipped('This test require pcntl_signal function');
+        }
+
+        // exec is mandatory here since we send a signal to the process
+        // see https://github.com/symfony/symfony/issues/5030 about prepending
+        // command with exec
+        $p = $this->getProcess('exec php '.__DIR__.'/NonStopableProcess.php 3');
+        $p->start();
+        usleep(100000);
+        $start = microtime(true);
+        $p->stop(1.1);
+        while ($p->isRunning()) {
+            usleep(1000);
+        }
+        $duration = microtime(true) - $start;
+
+        $this->assertLessThan(1.3, $duration);
+    }
+
     /**
      * tests results from sub processes
      *
@@ -62,18 +88,21 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider pipesCodeProvider
      */
-    public function testProcessPipes($expected, $code)
+    public function testProcessPipes($code, $size)
     {
         if (defined('PHP_WINDOWS_VERSION_BUILD')) {
             $this->markTestSkipped('Test hangs on Windows & PHP due to https://bugs.php.net/bug.php?id=60120 and https://bugs.php.net/bug.php?id=51800');
         }
 
+        $expected = str_repeat(str_repeat('*', 1024), $size) . '!';
+        $expectedLength = (1024 * $size) + 1;
+
         $p = $this->getProcess(sprintf('php -r %s', escapeshellarg($code)));
         $p->setStdin($expected);
         $p->run();
 
-        $this->assertSame($expected, $p->getOutput());
-        $this->assertSame($expected, $p->getErrorOutput());
+        $this->assertEquals($expectedLength, strlen($p->getOutput()));
+        $this->assertEquals($expectedLength, strlen($p->getErrorOutput()));
     }
 
     public function chainedCommandsOutputProvider()
@@ -255,6 +284,47 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
         // PHP will deadlock when it tries to cleanup $process
     }
 
+    public function testRunProcessWithTimeout()
+    {
+        $timeout = 0.5;
+        $process = $this->getProcess('sleep 3');
+        $process->setTimeout($timeout);
+        $start = microtime(true);
+        try {
+            $process->run();
+            $this->fail('A RuntimeException should have been raised');
+        } catch (RuntimeException $e) {
+
+        }
+        $duration = microtime(true) - $start;
+
+        $this->assertLessThan($timeout + Process::TIMEOUT_PRECISION, $duration);
+    }
+
+    public function testCheckTimeoutOnStartedProcess()
+    {
+        $timeout = 0.5;
+        $precision = 100000;
+        $process = $this->getProcess('sleep 3');
+        $process->setTimeout($timeout);
+        $start = microtime(true);
+
+        $process->start();
+
+        try {
+            while ($process->isRunning()) {
+                $process->checkTimeout();
+                usleep($precision);
+            }
+            $this->fail('A RuntimeException should have been raised');
+        } catch (RuntimeException $e) {
+
+        }
+        $duration = microtime(true) - $start;
+
+        $this->assertLessThan($timeout + $precision, $duration);
+    }
+
     public function responsesCodeProvider()
     {
         return array(
@@ -271,13 +341,11 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
             'fwrite(STDOUT, $in = file_get_contents(\'php://stdin\')); fwrite(STDERR, $in);',
             'include \'' . __DIR__ . '/ProcessTestHelper.php\';',
         );
-        $baseData = str_repeat('*', 1024);
 
         $codes = array();
         foreach (array(1, 16, 64, 1024, 4096) as $size) {
-            $data = str_repeat($baseData, $size) . '!';
             foreach ($variations as $code) {
-                $codes[] = array($data, $code);
+                $codes[] = array($code, $size);
             }
         }
 

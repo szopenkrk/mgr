@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="{{asset('css/style.css')}}" media="screen"/>
-        <link rel="stylesheet" href="{{asset('css/print.css')}}" media="print"/>
-        <title>System Zarządzania Pracami</title>
-    </head>
-    <body>
-        <div id="container" style="margin-top:-40px !important;">
-        <div class="baner"><img src="{{asset('images/head.jpg')}}"></div>
-                <div class="menu">
-                    <ul>
-                        <li><a href="{{ path('url_panel') }}">Panel</a></li>
-                        <li><a href="{{ path('url_autor') }}">Autor</a></li>
-                        <li><a href="{{ path('url_editor') }}">Edytor</a></li>
-                        <li><a href="{{ path('url_rewiever') }}">Recenzent</a></li>
-                        <li><a href="{{ path('url_users') }}">Użytkownicy</a></li>
-                        <li><a href="{{ path('url_work') }}">Prace</a></li>
-                        <li><a href="{{ path('fos_user_profile_show') }}">Twój profil</a></li>
-                        <li><a href="{{ path('fos_user_profile_edit') }}">Edycja profilu</a></li>
-                        <li><a href="logout">Wyloguj</a></li>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" media="screen"/>
+    <link rel="stylesheet" href="{{asset('css/print.css')}}" media="print"/>
+    <title>System Zarządzania Pracami</title>
+</head>
+<body>
+<div id="container" style="margin-top:-40px !important;">
+    <div class="baner"><img src="{{asset('images/head.jpg')}}"></div>
+    <div class="menu">
+        <ul>
+            <li><a href="{{ path('url_panel') }}">Panel</a></li>
+            <li><a href="{{ path('url_autor') }}">Autor</a></li>
+            <li><a href="{{ path('url_editor') }}">Edytor</a></li>
+            <li><a href="{{ path('url_rewiever') }}">Recenzent</a></li>
+            <li><a href="{{ path('url_users') }}">Użytkownicy</a></li>
+            <li><a href="{{ path('url_work') }}">Prace</a></li>
+            <li><a href="{{ path('fos_user_profile_show') }}">Twój profil</a></li>
+            <li><a href="{{ path('fos_user_profile_edit') }}">Edycja profilu</a></li>
+            <li><a href="logout">Wyloguj</a></li>
+            <li><a href="{{ path('url_conference') }}">Konferencje</a></li>
 
-                    </ul>
-                </div>
-        <div class="login">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                <a href="{{ path('fos_user_registration_register') }}">Zarejestruj</a>
-            {% endif %}
-        </div>
+        </ul>
+    </div>
+    <div class="login">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            <a href="{{ path('fos_user_registration_register') }}">Zarejestruj</a>
+        {% endif %}
+    </div>
 
-        {% for key, message in app.session.getFlashes() %}
+    {% for key, message in app.session.getFlashes() %}
         <div class="{{ key }}">
             {{ message|trans({}, 'FOSUserBundle') }}
         </div>
-        {% endfor %}
+    {% endfor %}
 
-        <div style="padding-bottom:60px; margin: auto;">
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+    <div style="padding-bottom:60px; margin: auto;">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+    <div id="footer" style="margin-top:0 !important;">
+        <div class="menu1">
+            Główny Panel<br />
+            <a href="{{ path('url_panel') }}">Panel</a>
         </div>
-        <div id="footer" style="margin-top:0 !important;">
-            <div class="menu1">
-                Główny Panel<br />
-                <a href="{{ path('url_panel') }}">Panel</a>
-            </div>
-            <div class="menu2">
-                <a href="{{ path('url_work') }}">Prace</a><br/>
-                <a href="{{ path('url_conference') }}">Konferencje</a><br />
-
-            </div>
-            <div class="menu3">
-                <a href="logout">Wyloguj</a><br />
-                Edytuj Profil<br>
-                Twój Profil<br>
-
-            </div>
-            <div class="opis">
-                Praca Magisterska Kochański Karol - IS WIMIIP AGH
-            </div>
-
+        <div class="menu2">
+            <a href="{{ path('url_work') }}">Prace</a><br/>
+            <a href="{{ path('url_conference') }}">Konferencje</a><br />
 
         </div>
+        <div class="menu3">
+            <a href="logout">Wyloguj</a><br />
+            Edytuj Profil<br>
+            Twój Profil<br>
+
         </div>
+        <div class="opis">
+            Praca Magisterska Kochański Karol - IS WIMIIP AGH
         </div>
-    </body>
+
+
+    </div>
+</div>
+</div>
+</body>
 </html>
 

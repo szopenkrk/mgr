@@ -7,6 +7,55 @@ in 2.1 minor versions.
 To get the diff for a specific change, go to https://github.com/symfony/symfony/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/symfony/symfony/compare/v2.1.0...v2.1.1
 
+* 2.1.11 (2013-06-02)
+
+ * 2038329: [Form] [Validator] Fixed post_max_size = 0 bug (Issue #8065)
+ * 169c0b9: [Finder] Fix iteration fails with non-rewindable streams
+ * 45b68e0: [Finder] Fix unexpected duplicate sub path related AppendIterator issue
+ * 5321600: Fixed two bugs in HttpCache
+ * 5c317b7: [Console] fix and refactor exit code handling
+ * 1469953: [CssSelector] Fix :nth-last-child() translation
+ * 91b8490: Fix Crawler::children() to not trigger a notice for childless node
+ * 0a4837d: Fixed XML syntax.
+ * a5441b2: Fixed parsing of leading blank lines in folded scalars. Closes #7989.
+ * e8d5d16: Fixed Loader import
+ * 37af771: [Console] Added dedicated testcase for HelperSet class
+
+* 2.1.10 (2013-05-06)
+
+ * 5b7e1e6: added a missing check for the provider key
+ * bcb5400: [Form] Fixed transform()/reverseTransform() to always throw TransformationFailedExceptions
+ * 7b2ebbf: [Form] Fixed: String validation groups are never interpreted as callbacks
+ * 0610750: if the repository method returns an array ensure that it's internal poin...
+ * 2b554d7: remove validation related headers when needed
+ * 2a531d7: Fix getPort() returning 80 instead of 443 when X-FORWARDED-PROTO is set to https
+ * 10dea94: [Filesystem] copy() is not working when open_basedir is set
+ * 8757ad4: [Process] Fix #5594 : `termsig` must be used instead of `stopsig` in exceptions when a process is signaled
+ * 06e21ff: Filesystem::touch() not working with different owners (utime/atime issue)
+ * 36d057b: [HttpFoundation][BrowserKit] fixed path when converting a cookie to a string
+ * 495d0e3: [HttpFoundation] fixed empty domain= in Cookie::__toString()
+ * c2bc707: fixed detection of secure cookies received over https
+ * 54bcf5c: [Translator] added additional conversion for encodings other than utf-8
+ * 8a434ed: fix a DI circular reference recognition bug
+ * 5abf887: Fix default value handling for multi-value options
+ * da156d3: fix overwriting of request's locale if attribute _locale is missing
+ * d552e4c: [HttpFoundation] do not use server variable PATH_INFO because it is already decoded and thus symfony is fragile to double encoding of the path
+ * 047212a: [Yaml] fixed handling an empty value
+ * 94a9cdc: [Routing][XML Loader] Add a possibility to set a default value to null
+ * 0f0c29c: [HttpFoundation] Fixed bug in key searching for NamespacedAttributeBag
+ * 7fc429f: [Form] DateTimeToRfc3339Transformer use proper transformation exteption in reverse transformation
+ * 9fcd2f6: [HttpFoundation] fixed the creation of sub-requests under some circumstances for IIS
+ * a3826ab: #7531: [HttpKernel][Config] FileLocator adds NULL as global resource path
+ * 9d71ebe: Fix autocompletion of command names when namespaces conflict
+ * bec8ff1: Fix timeout in Process::stop method
+ * bf4a9b0: Round stream_select fifth argument up.
+ * 3780fdb: Fix Process timeout
+ * 375ded4: [FrameworkBundle] fixed the discovery of the PHPUnit configuration file when using aggregate options like in -vc app/ (closes #7562)
+ * 673fd9b: idAsIndex should be true with a smallint or bigint id field.
+ * 64a1d39: Fixed long multibyte parameter logging in DbalLogger:startQuery
+ * 4cf06c1: Keep the file extension in the temporary copy and test that it exists (closes #7482)
+ * c4da2d9: [HttpFoundation] getClientIp is fixed.
+
 * 2.1.9 (2013-03-26)
 
  * 9875c4b: Added '@@' escaping strategy for YamlFileLoader and YamlDumper

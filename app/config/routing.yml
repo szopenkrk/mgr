@@ -43,20 +43,7 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-review_new:
-        pattern:   /
-        defaults:  { _controller: MyWorkBundle:Default:panelreview }
 
-work:
-    pattern:  /
-    defaults:  { _controller: MyWorkBundle:Review:work }
-
-_rewiev_create:
-    pattern:  /work/{id}
-    defaults: { _controller: MyWorkBundle:Rewiev:create }
-    requirements:
-        _method:  POST
-        blog_id: \d+
 
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
